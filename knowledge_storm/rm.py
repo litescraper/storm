@@ -461,7 +461,7 @@ class SerperRM(dspy.Retrieve):
         else:
             self.serper_search_api_key = os.environ["SERPER_API_KEY"]
 
-        self.base_url = "https://google.serper.dev"
+        self.base_url = os.getenv("SERPER_BASE_URL", "https://google.serper.dev").rstrip("/")
 
     def serper_runner(self, query_params):
         self.search_url = f"{self.base_url}/search"
